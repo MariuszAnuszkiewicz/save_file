@@ -12,17 +12,17 @@ class Run
         $argList = func_get_args();
         $sendDataObj = new SendData();
 
-           for ($i = 1; $i < $numArgs; ++$i) {
-               $content[] = $argList[$i];
-           }
+        for ($i = 1; $i < $numArgs; ++$i) {
+           $content[] = $argList[$i];
+        }
         $data['members'] = array(
-            array(join(", ", $content))
+           array(join(", ", $content))
         );
         $formattedData = json_encode($data);
         $status = false;
         try {
             if ($argList[0] == "Wyślij") {
-                if ($sendDataObj->sendProcess($formattedData) == true) {
+                if ($sendDataObj->sendProcess($argList[4], $formattedData) == true) {
                     $status = true;
                 }
             }
@@ -30,7 +30,7 @@ class Run
             echo $e->getMessage() . "The exception code is: " . $e->getCode();
         }
         $getDataObj = new GetData();
-        $getDataObj->getReadingProcess();
+        $getDataObj->getReadingProcess($argList[4]);
         return $status;
     }
 

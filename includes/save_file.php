@@ -27,7 +27,9 @@ use MariuszAnuszkiewicz\classes\Session;
     $surname = $validateObj->validateEmpty($inputs['surname'], $inputs['submit']);
     $file = $validateObj->validateInvalidExtentions($inputs['file'], $inputs['submit']);
 
-    if (Run::initGetSaveFile($submit, $name, $surname, $file) == true) {
+    $filePath = __DIR__ . "/../web/uploads/data.json";
+
+    if (Run::initGetSaveFile($submit, $name, $surname, $file, $filePath) == true) {
         header("Location: ../views/list_data.php");
     } else {
         exit;

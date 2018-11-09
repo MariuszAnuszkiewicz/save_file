@@ -4,10 +4,9 @@ class GetData
 {
     private $filePathToView;
 
-    public function getReadingProcess()
+    public function getReadingProcess($file)
     {
-        $filePath = __DIR__ . "/../web/uploads/data.json";
-        $results = file_get_contents($filePath, FILE_USE_INCLUDE_PATH);
+        $results = file_get_contents($file, FILE_USE_INCLUDE_PATH);
         $json = json_decode($results,true);
         return $json['members'];
     }

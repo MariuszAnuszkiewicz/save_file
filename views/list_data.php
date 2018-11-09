@@ -38,7 +38,8 @@ use MariuszAnuszkiewicz\classes\Run;
   <tbody>
 <?php
   $dataObj = new GetData();
-  foreach ($dataObj->getReadingProcess() as $result) {
+  $filePath = __DIR__ . "/../web/uploads/data.json";
+  foreach ($dataObj->getReadingProcess($filePath) as $result) {
      list($name, $surname, $file) = explode(", ", $result[0]);
      ?><td><?= $name; ?></td><?php
      ?><td><?= $surname; ?></td><?php

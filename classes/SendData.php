@@ -2,10 +2,9 @@
 
 class SendData
 {
-   public function sendProcess($data)
+   public function sendProcess($file, $data)
    {
-      $filePath = __DIR__ . "/../web/uploads/data.json";
-      $save = file_put_contents($filePath, $data) ? true : false;
+      $save = file_put_contents($file, $data) ? true : false;
       if ($save == false) {
           throw new \Exception('Dane nie zostały zapisane');
       }
