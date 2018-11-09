@@ -36,7 +36,7 @@ class UserLogin
                         'id' => $this->user->getUserId(),
                         'email' => $this->user->getUserEmail()
                     ];
-					session_regenerate_id();
+		     session_regenerate_id();
                     Session::set($this->user->getSessionName(), $this->extractForSessions);
                     header("Location: ../includes/save_file.php");
                     return Session::flash('login','Zalogowałeś się Pomyślnie');
