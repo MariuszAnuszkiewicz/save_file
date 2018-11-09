@@ -23,7 +23,8 @@ class Run
 
         try {
             if ($argList[0] == "Wyślij") {
-                if ($sendDataObj->sendProcess($argList[4], $formattedData) == true) {
+                $file = preg_match('/data.json/', $argList[$numArgs - 1]) ? $argList[$numArgs - 1] : null;
+                if ($sendDataObj->sendProcess($file, $formattedData) == true) {
                     $status = true;
                 }
             }
