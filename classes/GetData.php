@@ -2,24 +2,24 @@
 
 class GetData
 {
-    private $filePathToView;
+    private $filePathToSave;
 
     public function getReadingProcess()
     {
-        $results = file_get_contents($this->getFileToView("view"), FILE_USE_INCLUDE_PATH);
+        $results = file_get_contents($this->getFileToSave("view"), FILE_USE_INCLUDE_PATH);
         $json = json_decode($results,true);
         return $json['members'];
     }
 
-    public function getFileToView($location)
+    public function getFileToSave($location)
     {
         switch ($location) {
             case "view":
-                return $this->filePathToView = __DIR__ . "/../web/uploads/data.json";
+                return $this->filePathToSave = __DIR__ . "/../web/uploads/data.json";
             break;
 
             case "link":
-                return $this->filePathToView = $_SERVER['REQUEST_URI'] . "/../../web/uploads/data.json";
+                return $this->filePathToSave = $_SERVER['REQUEST_URI'] . "/../../web/uploads/data.json";
             break;
         }
     }

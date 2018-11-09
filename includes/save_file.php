@@ -29,7 +29,7 @@ use MariuszAnuszkiewicz\classes\GetData;
     $surname = $validateObj->validateEmpty($inputs['surname'], $inputs['submit']);
     $file = $validateObj->validateInvalidExtentions($inputs['file'], $inputs['submit']);
 
-    if (Run::initGetSaveFile($submit, $name, $surname, $file, $getDataObj->getFileToView("view")) == true) {
+    if (Run::initGetSaveFile($submit, $name, $surname, $file, $getDataObj->getFileToSave("view")) == true) {
         header("Location: ../views/list_data.php");
     } else {
         exit;

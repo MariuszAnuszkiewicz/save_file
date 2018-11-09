@@ -48,7 +48,7 @@ use MariuszAnuszkiewicz\classes\Run;
   </tbody>
   </table>
 </div>
-<?php echo '<b><a href=' . $dataObj->getFileToView("link") . '>Link do pliku</a></b>'; ?>
+<?php echo '<b><a href=' . $dataObj->getFileToSave("link") . '>Link do pliku</a></b>'; ?>
 <?php else : header("Location: ../includes/user_login.php"); ?>
 
 <?php endif ?>
