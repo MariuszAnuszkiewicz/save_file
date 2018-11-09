@@ -4,6 +4,7 @@ use MariuszAnuszkiewicz\classes\Run;
 use MariuszAnuszkiewicz\classes\ValidateSendInput\ValidateSendInput;
 use MariuszAnuszkiewicz\classes\Session;
 use MariuszAnuszkiewicz\classes\GetData;
+use MariuszAnuszkiewicz\Config\Config;
 
     if (!defined('AUTOLOAD')) {
         define('AUTOLOAD', '../autoload/');
@@ -29,7 +30,7 @@ use MariuszAnuszkiewicz\classes\GetData;
     $surname = $validateObj->validateEmpty($inputs['surname'], $inputs['submit']);
     $file = $validateObj->validateInvalidExtentions($inputs['file'], $inputs['submit']);
 
-    if (Run::initGetSaveFile($submit, $name, $surname, $file, $getDataObj->getFileToSave("view")) == true) {
+    if (Run::initGetSaveFile($submit, $name, $surname, $file, Config::get('save_file')) == true) {
         header("Location: ../views/list_data.php");
     } else {
         exit;

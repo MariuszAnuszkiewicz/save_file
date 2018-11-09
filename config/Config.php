@@ -23,3 +23,8 @@ Config::set('db.db_name', 'user');
 // sessions
 
 Config::set('session_name', 'user');
+
+// save file
+
+Config::set('link_save_file', $_SERVER['REQUEST_URI'] . "/../../web/uploads/data.json");
+Config::set('save_file',  __DIR__ . "/../web/uploads/data.json");
