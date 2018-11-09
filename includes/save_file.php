@@ -16,7 +16,7 @@ use MariuszAnuszkiewicz\classes\GetData;
     }
     $validateObj = new ValidateSendInput();
     $getDataObj = new GetData();
-    
+
     $inputs = [
        'name' => isset($_POST['name']) ? $_POST['name'] : null,
        'surname' => isset($_POST['surname']) ? $_POST['surname'] : null,
