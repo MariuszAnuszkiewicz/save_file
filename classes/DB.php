@@ -1,4 +1,4 @@
-<?php namespace MariuszAnuszkiewicz\classes\Database;
+<?php namespace MariuszAnuszkiewicz\classes;
 
 use MariuszAnuszkiewicz\Config\Config;
 

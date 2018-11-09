@@ -1,11 +1,6 @@
-<?php namespace MariuszAnuszkiewicz\classes\UserLogin;
+<?php namespace MariuszAnuszkiewicz\classes;
 
-use MariuszAnuszkiewicz\classes\Database\DB;
-use MariuszAnuszkiewicz\classes\HashPassword\HashPassword;
-use MariuszAnuszkiewicz\classes\User\User;
-use MariuszAnuszkiewicz\classes\ValidateLoginInput\ValidateLoginInput;
-use MariuszAnuszkiewicz\classes\Session\Session;
-use MariuszAnuszkiewicz\helper\Alerts\Alerts;
+use MariuszAnuszkiewicz\helper\Alerts;
 
 class UserLogin
 {
@@ -41,6 +36,7 @@ class UserLogin
                         'id' => $this->user->getUserId(),
                         'email' => $this->user->getUserEmail()
                     ];
+					session_regenerate_id();
                     Session::set($this->user->getSessionName(), $this->extractForSessions);
                     header("Location: ../includes/save_file.php");
                     return Session::flash('login','Zalogowałeś się Pomyślnie');

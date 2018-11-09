@@ -1,9 +1,6 @@
-<?php namespace MariuszAnuszkiewicz\classes\User;
+<?php namespace MariuszAnuszkiewicz\classes;
 
-use MariuszAnuszkiewicz\classes\Database\DB;
 use MariuszAnuszkiewicz\Config\Config;
-use MariuszAnuszkiewicz\classes\Session\Session;
-
 
 class User
 {

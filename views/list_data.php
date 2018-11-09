@@ -4,9 +4,9 @@ if (!defined('AUTOLOAD')) {
 }
 require_once(AUTOLOAD . "autoloading.php");
 
-use MariuszAnuszkiewicz\classes\GetData\GetData;
-use MariuszAnuszkiewicz\classes\Session\Session;
-use MariuszAnuszkiewicz\classes\Run\Run;
+use MariuszAnuszkiewicz\classes\GetData;
+use MariuszAnuszkiewicz\classes\Session;
+use MariuszAnuszkiewicz\classes\Run;
 
 ?>
 <!DOCTYPE html>
@@ -30,14 +30,14 @@ use MariuszAnuszkiewicz\classes\Run\Run;
   <table class="users_table" style="display: block; width: 300px; height: auto; margin-top: 12px; margin-bottom: 12px;">
    <thead>
     <tr style="border: 1px solid black;">
-        <th style="border-right: 1px solid black; border-bottom: 1px solid black;  padding-right: 8px;">Name</th>
-        <th style="border-right: 1px solid black; border-bottom: 1px solid black;  padding-right: 8px;">Surname</th>
-        <th style="border-right: 1px solid black; border-bottom: 1px solid black;  padding-right: 8px;">File</th>
+       <th style="border-right: 1px solid black; border-bottom: 1px solid black;  padding-right: 8px;">Name</th>
+       <th style="border-right: 1px solid black; border-bottom: 1px solid black;  padding-right: 8px;">Surname</th>
+       <th style="border-right: 1px solid black; border-bottom: 1px solid black;  padding-right: 8px;">File</th>
     </tr>
    </thead>
   <tbody>
 <?php
- $dataObj = new GetData();
+  $dataObj = new GetData();
   foreach ($dataObj->getReadingProcess() as $result) {
      list($name, $surname, $file) = explode(", ", $result[0]);
      ?><td><?= $name; ?></td><?php
@@ -48,13 +48,11 @@ use MariuszAnuszkiewicz\classes\Run\Run;
   </tbody>
   </table>
 </div>
-<?php echo '<b><a href=' . $dataObj->getUrlFile() . '>Link do pliku</a></b>'; ?>
+<?php echo '<b><a href=' . $dataObj->getFileToView() . '>Link do pliku</a></b>'; ?>
 <?php else : header("Location: ../includes/user_login.php"); ?>
 
 <?php endif ?>
-<div class="redirect_to_home">
- <a class="home-btn" href="../includes/user_login.php">Home</a>
-</div>
+
 <div class="redirect_to_save">
  <a class="save-file-btn" href="../includes/save_file.php">Save File</a>
 </div>

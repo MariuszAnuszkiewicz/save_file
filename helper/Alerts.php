@@ -1,4 +1,4 @@
-<?php namespace MariuszAnuszkiewicz\helper\Alerts;
+<?php namespace MariuszAnuszkiewicz\helper;
 
 
 class Alerts

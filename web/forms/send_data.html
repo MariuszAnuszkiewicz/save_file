@@ -12,14 +12,17 @@
 </div>
 <div class="section_send" style="display: block; width: 175px; height: 165px; background-color: aliceblue; padding-top: 15px;">
     <form action="" method="post" id="send-data">
-      <label for='name-label'><b>Name</b></label>
+      <label for="name-label"><b>Name</b></label>
         <input type="text" name="name" id="input-name">
-      <label for='surname-label'><b>Surname</b></label>
+      <label for="surname-label"><b>Surname</b></label>
         <input type="text" name="surname" id="input-surname">
-      <label for='file-label'><b>File</b></label>
+      <label for="file-label"><b>File</b></label>
         <input type="text" name="file" id="input-file">
         <input type="submit" name="submit" id="execute-btn" value="Wyślij" style="display: block; margin-top: 12px;"/>
     </form>
+    <div class="redirect_to_home" style="display: block; position: relative; top: 65px;">
+        <a class="home-btn" href="../views/list_data.php">Home</a>
+    </div>
 </div>
 
 </body>

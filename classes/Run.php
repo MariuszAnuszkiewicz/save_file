@@ -1,24 +1,17 @@
-<?php namespace MariuszAnuszkiewicz\classes\Run;
-
-use MariuszAnuszkiewicz\classes\SendData\SendData;
-use MariuszAnuszkiewicz\classes\GetData\GetData;
-use MariuszAnuszkiewicz\classes\UserRegister\UserRegister;
-use MariuszAnuszkiewicz\classes\UserLogin\UserLogin;
-use MariuszAnuszkiewicz\classes\ValidateRegisterInput\ValidateRegisterInput;
-use MariuszAnuszkiewicz\classes\ValidateLoginInput\ValidateLoginInput;
+<?php namespace MariuszAnuszkiewicz\classes;
 
 class Run
 {
-    const FILE = "./web/uploads/data.json";
-
+  
     public static function initGetSaveFile()
     {
         $status = null;
+        $data = null;
+        $content = null;
         $numArgs = func_num_args();
         $argList = func_get_args();
         $sendDataObj = new SendData();
-        $data = null;
-        $content = null;
+
            for ($i = 1; $i < $numArgs; ++$i) {
                $content[] = $argList[$i];
            }
@@ -57,11 +50,10 @@ class Run
         $email = $validateObj->validateEmail($inputs['email'], $submit);
         $password = $validateObj->validateLength($inputs['password'], $submit);
 
-
         if (isset($submit)) {
             $userRegisterObj = new UserRegister();
             if ($userRegisterObj->register($username, $email, $password) == true) {
-                $userRegisterObj->register($username, $email, $password);
+                $userRegisterObj->register($validateObj->validateUsername($username), $email, $validateObj->validatePassword($password));
             } else {
                 exit;
             }
@@ -84,9 +76,7 @@ class Run
         if (isset($submit)) {
             $userLoginObj = new UserLogin();
             if ($userLoginObj->login($email, $password) == true) {
-                $userLoginObj->login($email, $password);
-            } else {
-                exit;
+                $userLoginObj->login($email, $validateObj->validatePassword($password));
             }
         }
     }

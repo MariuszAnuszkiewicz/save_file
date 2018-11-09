@@ -1,4 +1,4 @@
-<?php namespace MariuszAnuszkiewicz\classes\Session;
+<?php namespace MariuszAnuszkiewicz\classes;
 
 class Session
 {

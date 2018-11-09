@@ -1,8 +1,8 @@
 <?php
 
-use MariuszAnuszkiewicz\classes\Run\Run;
+use MariuszAnuszkiewicz\classes\Run;
 use MariuszAnuszkiewicz\classes\ValidateSendInput\ValidateSendInput;
-use MariuszAnuszkiewicz\classes\Session\Session;
+use MariuszAnuszkiewicz\classes\Session;
 
     if (!defined('AUTOLOAD')) {
         define('AUTOLOAD', '../autoload/');
@@ -11,7 +11,7 @@ use MariuszAnuszkiewicz\classes\Session\Session;
     require_once(FORMS . "send_data.html");
 
     if (Session::exists('user') && Session::get('user')) {
-        echo Session::flash('login', 'Zalogowałeś się Pomyślnie');
+        echo Session::flash('login');
     }
     $validateObj = new ValidateSendInput();
 
@@ -33,6 +33,3 @@ use MariuszAnuszkiewicz\classes\Session\Session;
         exit;
     }
 
-?>
-  <a style="display: block; position: absolute; top: 280px;" class="home-btn" href="../index.php">Home</a>
-<?php

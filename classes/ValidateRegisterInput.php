@@ -1,10 +1,9 @@
-<?php namespace MariuszAnuszkiewicz\classes\ValidateRegisterInput;
-
-use MariuszAnuszkiewicz\classes\Database\DB;
+<?php namespace MariuszAnuszkiewicz\classes;
 
 class ValidateRegisterInput
 {
-    const INVALID_PATTERN = "Pole tekstowe powinno zawierać znaki literowe";
+    const INVALID_USERNAME_PATTERN = "Pole tekstowe powinno zawierać tylko znaki literowe";
+	const INVALID_PASSWORD_PATTERN = "Pole password powinno zawierać znaki literowe i lub cyfry";
     const EMPTY_INPUT = "Wartość pola jest pusta";
     const TOO_LONG = "Wartość wprowadzona w pole jest za długa";
     const INVALID_EMAIL = "Pole email ma nieprawidłowy format";
@@ -33,39 +32,52 @@ class ValidateRegisterInput
     {
         $isSet = isset($input) ? $input : null;
         if (isset($submit) || $isSet) {
-            if (!preg_match('/^[a-zA-Z]*$/', $input)) {
-                    echo self::INVALID_PATTERN;
-                if (strlen($input) < 1) {
-                    echo self::EMPTY_INPUT;
-                    exit;
-                } elseif (strlen($input) > 99) {
-                    echo self::TOO_LONG;
-                    exit;
-                }
-            }
+			if (strlen($this->escape($input)) < 1) {
+				echo self::EMPTY_INPUT;
+				exit;
+			} elseif (strlen($this->escape($input)) > 99) {
+				echo self::TOO_LONG;
+				exit;
+			} 
         }
-        return $input;
+        return $this->escape($input);
     }
 
     public function validateEmail($input, $submit)
     {
         $isSet = isset($input) ? $input : null;
         if (isset($submit) || $isSet) {
-            if (!filter_var($input, FILTER_VALIDATE_EMAIL)) {
+            if (!filter_var($this->escape($input, FILTER_VALIDATE_EMAIL))) {
                 echo self::INVALID_EMAIL;
                 exit;
             }
-            elseif (strlen($input) < 1) {
+            elseif (strlen($this->escape($input)) < 1) {
                 echo self::EMPTY_INPUT;
                 exit;
             }
-            elseif (strlen($input) > 99) {
+            elseif (strlen($this->escape($input)) > 99) {
                 echo self::TOO_LONG;
                 exit;
             }
         }
-        return $input;
+        return $this->escape($input);
     }
+	
+	public function validateUsername($input)
+	{
+	  if (!preg_match('/^[a-zA-Z]*$/', $this->escape($input))) {
+			echo self::INVALID_USERNAME_PATTERN;
+			exit;
+		}
+	}
+	
+	public function validatePassword($input)
+	{
+	  if (!preg_match('/^[a-zA-Z0-9]*$/', $this->escape($input))) {
+			echo self::INVALID_PASSWORD_PATTERN;
+			exit;
+		}
+	}
 
     public function escape($input) {
         return htmlentities(trim($input), ENT_QUOTES);

@@ -1,9 +1,6 @@
-<?php namespace MariuszAnuszkiewicz\classes\UserRegister;
+<?php namespace MariuszAnuszkiewicz\classes;
 
-use MariuszAnuszkiewicz\classes\Database\DB;
-use MariuszAnuszkiewicz\classes\HashPassword\HashPassword;
-use MariuszAnuszkiewicz\classes\ValidateRegisterInput\ValidateRegisterInput;
-use MariuszAnuszkiewicz\helper\Alerts\Alerts;
+use MariuszAnuszkiewicz\helper\Alerts;
 
 class UserRegister
 {
@@ -26,5 +23,6 @@ class UserRegister
          $sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
          $this->db->query($sql, array($this->validate->escape($username), $this->validate->escape($email), $this->validate->escape($this->hash->encrypt($password))));
       }
+	  header("Location: ../includes/user_login.php");
    }
 }

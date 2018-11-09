@@ -1,4 +1,4 @@
-<?php namespace MariuszAnuszkiewicz\classes\HashPassword;
+<?php namespace MariuszAnuszkiewicz\classes;
 
 
 class HashPassword
