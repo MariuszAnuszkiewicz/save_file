@@ -22,10 +22,8 @@ function autoloadClasses($class) {
     $posStart = strripos($class, '\\');
     $posEnd = strlen($class);
     $className = substr(ltrim($class), $posStart + 1, $posEnd);
-    $fileClass = ROOT . DS . 'classes' . DS . str_replace('\\', DS, ucfirst($className)) . '.php';
-    $fileConfig = ROOT . DS . 'config'. DS . str_replace('\\', DS, $className) . '.php';
-    $fileView = ROOT . DS . 'views'. DS . str_replace('\\', DS, $className) . '.php';
-    $heplerFiles = ROOT . DS . 'helper'. DS . str_replace('\\', DS, $className) . '.php';
+    $fileClass = ROOT.DS . 'classes' . DS . str_replace('\\', DS, ucfirst($className)) . '.php';
+    $fileConfig = ROOT.DS . 'config'. DS . str_replace('\\', DS, $className) . '.php';
 
     if($posStart) {
         if (is_readable($fileClass)) {
@@ -34,15 +32,9 @@ function autoloadClasses($class) {
         if (is_readable($fileConfig)) {
             require_once "$fileConfig";
         }
-        if (is_readable($fileView)) {
-            require_once "$fileView";
-        }
-        if (is_readable($heplerFiles)) {
-            require_once "$heplerFiles";
-        }
     }
     else {
-        throw new Exception('Failed to include class '. $class_name);
+        throw new Exception('Failed to include class '. $className);
     }
 }
 
