@@ -38,8 +38,7 @@ use MariuszAnuszkiewicz\classes\Run;
   <tbody>
 <?php
   $dataObj = new GetData();
-  $filePath = __DIR__ . "/../web/uploads/data.json";
-  foreach ($dataObj->getReadingProcess($filePath) as $result) {
+  foreach ($dataObj->getReadingProcess() as $result) {
      list($name, $surname, $file) = explode(", ", $result[0]);
      ?><td><?= $name; ?></td><?php
      ?><td><?= $surname; ?></td><?php
@@ -49,7 +48,7 @@ use MariuszAnuszkiewicz\classes\Run;
   </tbody>
   </table>
 </div>
-<?php echo '<b><a href=' . $dataObj->getFileToView() . '>Link do pliku</a></b>'; ?>
+<?php echo '<b><a href=' . $dataObj->getFileToView("link") . '>Link do pliku</a></b>'; ?>
 <?php else : header("Location: ../includes/user_login.php"); ?>
 
 <?php endif ?>

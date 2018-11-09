@@ -3,6 +3,7 @@
 use MariuszAnuszkiewicz\classes\Run;
 use MariuszAnuszkiewicz\classes\ValidateSendInput\ValidateSendInput;
 use MariuszAnuszkiewicz\classes\Session;
+use MariuszAnuszkiewicz\classes\GetData;
 
     if (!defined('AUTOLOAD')) {
         define('AUTOLOAD', '../autoload/');
@@ -14,7 +15,8 @@ use MariuszAnuszkiewicz\classes\Session;
         echo Session::flash('login');
     }
     $validateObj = new ValidateSendInput();
-
+    $getDataObj = new GetData();
+    
     $inputs = [
        'name' => isset($_POST['name']) ? $_POST['name'] : null,
        'surname' => isset($_POST['surname']) ? $_POST['surname'] : null,
@@ -27,9 +29,7 @@ use MariuszAnuszkiewicz\classes\Session;
     $surname = $validateObj->validateEmpty($inputs['surname'], $inputs['submit']);
     $file = $validateObj->validateInvalidExtentions($inputs['file'], $inputs['submit']);
 
-    $filePath = __DIR__ . "/../web/uploads/data.json";
-
-    if (Run::initGetSaveFile($submit, $name, $surname, $file, $filePath) == true) {
+    if (Run::initGetSaveFile($submit, $name, $surname, $file, $getDataObj->getFileToView("view")) == true) {
         header("Location: ../views/list_data.php");
     } else {
         exit;
