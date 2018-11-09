@@ -32,13 +32,13 @@ class ValidateRegisterInput
     {
         $isSet = isset($input) ? $input : null;
         if (isset($submit) || $isSet) {
-			if (strlen($this->escape($input)) < 1) {
-				echo self::EMPTY_INPUT;
-				exit;
-			} elseif (strlen($this->escape($input)) > 99) {
-				echo self::TOO_LONG;
-				exit;
-			} 
+	   if (strlen($this->escape($input)) < 1) {
+	       echo self::EMPTY_INPUT;
+	       exit;
+	   } elseif (strlen($this->escape($input)) > 99) {
+	       echo self::TOO_LONG;
+	       exit;
+	   } 
         }
         return $this->escape($input);
     }
@@ -62,22 +62,22 @@ class ValidateRegisterInput
         }
         return $this->escape($input);
     }
+
+    public function validateUsername($input)
+    {
+       if (!preg_match('/^[a-zA-Z]*$/', $this->escape($input))) {
+           echo self::INVALID_USERNAME_PATTERN;
+           exit;
+       }
+    }
 	
-	public function validateUsername($input)
-	{
-	  if (!preg_match('/^[a-zA-Z]*$/', $this->escape($input))) {
-			echo self::INVALID_USERNAME_PATTERN;
-			exit;
-		}
-	}
-	
-	public function validatePassword($input)
-	{
-	  if (!preg_match('/^[a-zA-Z0-9]*$/', $this->escape($input))) {
-			echo self::INVALID_PASSWORD_PATTERN;
-			exit;
-		}
-	}
+    public function validatePassword($input)
+    {
+       if (!preg_match('/^[a-zA-Z0-9]*$/', $this->escape($input))) {
+           echo self::INVALID_PASSWORD_PATTERN;
+           exit;
+       }
+    }
 
     public function escape($input) {
         return htmlentities(trim($input), ENT_QUOTES);
