@@ -18,26 +18,27 @@ if (!defined('INCLUDES')) {
 }
 
 function autoloadClasses($class) {
-    $pos_start = strripos($class, '\\');
-    $pos_end = strlen($class);
-    $class_name = substr(ltrim($class), $pos_start+1, $pos_end);
-    $file_class = ROOT . DS . 'classes' . DS . str_replace('\\', DS, ucfirst($class_name)) . '.php';
-    $file_config = ROOT . DS . 'config'. DS . str_replace('\\', DS, $class_name) . '.php';
-    $file_view = ROOT . DS . 'views'. DS . str_replace('\\', DS, $class_name) . '.php';
-    $hepler_files = ROOT . DS . 'helper'. DS . str_replace('\\', DS, $class_name) . '.php';
 
-    if($pos_start) {
-        if (is_readable($file_class)) {
-            require_once "$file_class";
+    $posStart = strripos($class, '\\');
+    $posEnd = strlen($class);
+    $className = substr(ltrim($class), $posStart + 1, $posEnd);
+    $fileClass = ROOT . DS . 'classes' . DS . str_replace('\\', DS, ucfirst($className)) . '.php';
+    $fileConfig = ROOT . DS . 'config'. DS . str_replace('\\', DS, $className) . '.php';
+    $fileView = ROOT . DS . 'views'. DS . str_replace('\\', DS, $className) . '.php';
+    $heplerFiles = ROOT . DS . 'helper'. DS . str_replace('\\', DS, $className) . '.php';
+
+    if($posStart) {
+        if (is_readable($fileClass)) {
+            require_once "$fileClass";
         }
-        if (is_readable($file_config)) {
-            require_once "$file_config";
+        if (is_readable($fileConfig)) {
+            require_once "$fileConfig";
         }
-        if (is_readable($file_view)) {
-            require_once "$file_view";
+        if (is_readable($fileView)) {
+            require_once "$fileView";
         }
-        if (is_readable($hepler_files)) {
-            require_once "$hepler_files";
+        if (is_readable($heplerFiles)) {
+            require_once "$heplerFiles";
         }
     }
     else {
