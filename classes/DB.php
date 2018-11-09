@@ -18,9 +18,9 @@ class DB
         $password = Config::get('db.password');
         $dsn = 'mysql:dbname='. Config::get('db.db_name') . ';host=' . Config::get('db.host') .'';
 
-        try{
+        try {
             $this->pdo = new \PDO($dsn, $username, $password);
-        }catch(\PDOException $e) {
+        } catch(\PDOException $e) {
             echo self::CONNECT_FAILED;
             die($e->getMessage());
         }
