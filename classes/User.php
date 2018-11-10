@@ -8,6 +8,7 @@ class User
     private $db;
     private $userId;
     private $userEmail;
+    private $userName;
     private $sessionName;
 
     public function __construct($email = null)
@@ -17,10 +18,10 @@ class User
         if (!$email) {
             $this->loggedIn = false;
         } else {
-            $this->userId = $this->getIdByEmail($email);
-            $this->userEmail = $email;
-            $this->loggedIn = true;
-            Session::set($this->sessionName, $this->loggedIn);
+           $this->userId = $this->getIdByEmail($email);
+           $this->userName = $this->getUsernameByEmail($email);
+           $this->userEmail = $email;
+           $this->loggedIn = true;
         }
     }
 
@@ -32,6 +33,18 @@ class User
         $output = null;
         for ($i = 0; $i < $this->db->countRow(); $i++) {
             $output[] = $row[$i]['id'];
+        }
+        return $output;
+    }
+
+    public function getUsernameByEmail($email)
+    {
+        $sql = "SELECT username FROM users WHERE email = ?";
+        $this->db->query($sql, array($email));
+        $row = $this->db->results();
+        $output = null;
+        for ($i = 0; $i < $this->db->countRow(); $i++) {
+            $output[] = $row[$i]['username'];
         }
         return $output;
     }
@@ -56,6 +69,11 @@ class User
     public function getUserEmail()
     {
         return $this->userEmail;
+    }
+
+    public function getUserName()
+    {
+        return $this->userName;
     }
 
     public function getSessionName()

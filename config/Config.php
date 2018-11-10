@@ -1,6 +1,5 @@
 <?php namespace MariuszAnuszkiewicz\Config;
 
-
 class Config extends Setting
 {
     public static function get($key)

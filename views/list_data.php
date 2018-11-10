@@ -23,7 +23,11 @@ use MariuszAnuszkiewicz\Config\Files;
      if (isset($_REQUEST['logout'])) {
          echo "<a href=''" . Run::logout() . "'>Log out</a>";
      } else {
+         list($username) = Session::get('user')['username'];
          echo "<a href='?logout'>Log out</a>";
+     ?>
+         <div class="username" style="inline: block; position: relative; top: 3px"><?= '<b>' . $username . '</b>' ?></div>
+     <?php
      }
 ?>
 

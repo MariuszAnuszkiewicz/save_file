@@ -34,7 +34,8 @@ class UserLogin
                 if ($this->hash->encrypt($password) === $this->extractPassword['DB'] && $this->user->isLoggedIn() == true) {
                     $this->extractForSessions = [
                         'id' => $this->user->getUserId(),
-                        'email' => $this->user->getUserEmail()
+                        'email' => $this->user->getUserEmail(),
+                        'username' => $this->user->getUserName()
                     ];
                     session_regenerate_id();
                     Session::set($this->user->getSessionName(), $this->extractForSessions);
@@ -54,6 +55,11 @@ class UserLogin
         if (session_destroy()) {
             header("Location: ../includes/user_login.php");
         }
+    }
+
+    public function getSessionKeys($key)
+    {
+        return $this->extractForSessions[$key];
     }
 
     public function getUser()

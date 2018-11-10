@@ -11,12 +11,10 @@ use MariuszAnuszkiewicz\classes\Session;
 
     Run::initLoginUser();
 
-if (Session::exists('user')) {
+if (!Session::exists('user')) {
     echo Session::flash('login_failed');
 }
 
 if (isset($_SERVER['HTTP_REFERER']) && !Session::exists('user')) {
-    if ($_SERVER['HTTP_REFERER']) {
-        echo 'Wylogowałeś się pomyślnie';
-   }
+    echo 'Wylogowałeś się pomyślnie';
 }
