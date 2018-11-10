@@ -22,11 +22,11 @@ class Session
 
    public static function flash($name, $string = null) {
       if (self::exists($name)) {
-	      $session = self::get($name);
-	      self::delete($name);
-	      return $session;
+          $session = self::get($name);
+          self::delete($name);
+          return $session;
       } else {
-	      self::set($name, $string);
+	  self::set($name, $string);
       }
    }
 }
