@@ -19,7 +19,7 @@ class Session
    public static function delete($name)
    {
       if (self::exists($name)) {
-	      unset($_SESSION[$name]);
+	  unset($_SESSION[$name]);
       }
    }
 
@@ -30,7 +30,7 @@ class Session
           self::delete($name);
           return $session;
       } else {
-	      self::set($name, $string);
+	  self::set($name, $string);
       }
    }
 }
