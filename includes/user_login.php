@@ -14,7 +14,6 @@ use MariuszAnuszkiewicz\classes\Session;
 if (!Session::exists('user')) {
     echo Session::flash('login_failed');
 }
-
-if (isset($_SERVER['HTTP_REFERER']) && !Session::exists('user')) {
+if (isset($_SERVER['HTTP_REFERER']) && !Session::exists('user') && (!isset($_POST['submit_login']))) {
     echo 'Wylogowałeś się pomyślnie';
 }
