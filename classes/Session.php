@@ -16,17 +16,17 @@ class Session
 
    public static function delete($name){
       if(self::exists($name)){
-	 unset($_SESSION[$name]);
+	     unset($_SESSION[$name]);
       }
    }
 
-   public static function flash($name, $string = null){
-      if(self::exists($name)){
-	 $session = self::get($name);
-	 self::delete($name);
-	 return $session;
-      }else{
-	 self::set($name, $string);
+   public static function flash($name, $string = null) {
+      if (self::exists($name)) {
+	      $session = self::get($name);
+	      self::delete($name);
+	      return $session;
+      } else {
+	      self::set($name, $string);
       }
    }
 }

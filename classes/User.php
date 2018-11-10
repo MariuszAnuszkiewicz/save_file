@@ -13,7 +13,7 @@ class User
     public function __construct($email = null)
     {
         $this->db = DB::getInstance();
-        $this->sessionName = Config::get('session_name');
+        $this->sessionName = Config::get('session.session_name');
         if (!$email) {
             $this->loggedIn = false;
         } else {

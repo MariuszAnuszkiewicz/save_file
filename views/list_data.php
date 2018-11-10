@@ -7,7 +7,7 @@ require_once(AUTOLOAD . "autoloading.php");
 use MariuszAnuszkiewicz\classes\GetData;
 use MariuszAnuszkiewicz\classes\Session;
 use MariuszAnuszkiewicz\classes\Run;
-use MariuszAnuszkiewicz\Config\Config;
+use MariuszAnuszkiewicz\Config\Files;
 
 ?>
 <!DOCTYPE html>
@@ -49,7 +49,7 @@ use MariuszAnuszkiewicz\Config\Config;
   </tbody>
   </table>
 </div>
-<?php echo '<b><a href=' . Config::get('link_save_file') . '>Link do pliku</a></b>'; ?>
+<?php echo '<b><a href=' . Files::get('link_save_file') . '>Link do pliku</a></b>'; ?>
 <?php else : header("Location: ../includes/user_login.php"); ?>
 
 <?php endif ?>
