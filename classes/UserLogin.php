@@ -26,8 +26,6 @@ class UserLogin
             foreach ($this->user->getPasswordByEmail($email) as $extractPassword) {
                 $this->extractPassword['DB'] = $extractPassword;
             }
-        } else {
-            echo Alerts::$alert['empty_database'];
         }
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (!empty($email) && !empty($password)) {
