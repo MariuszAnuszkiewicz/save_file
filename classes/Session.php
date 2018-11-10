@@ -2,11 +2,13 @@
 
 class Session
 {
-   public static function exists($name){
+   public static function exists($name)
+   {
       return (isset($_SESSION[$name])) ? true : false;
    }
    
-   public static function set($name, $value){
+   public static function set($name, $value)
+   {
       return $_SESSION[$name] = $value;
    }
 
@@ -14,19 +16,21 @@ class Session
       return $_SESSION[$name];
    }
 
-   public static function delete($name){
-      if(self::exists($name)){
-	 unset($_SESSION[$name]);
+   public static function delete($name)
+   {
+      if (self::exists($name)) {
+	      unset($_SESSION[$name]);
       }
    }
 
-   public static function flash($name, $string = null) {
+   public static function flash($name, $string = null)
+   {
       if (self::exists($name)) {
           $session = self::get($name);
           self::delete($name);
           return $session;
       } else {
-	  self::set($name, $string);
+	      self::set($name, $string);
       }
    }
 }
