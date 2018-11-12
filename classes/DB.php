@@ -4,7 +4,6 @@ use MariuszAnuszkiewicz\Config\Config;
 
 class DB
 {
-    const CONNECT_FAILED = "Failed to connect to Database";
     private static $instance;
     private $pdo,
             $query,
@@ -21,8 +20,7 @@ class DB
         try {
             $this->pdo = new \PDO($dsn, $username, $password);
         } catch(\PDOException $e) {
-            echo self::CONNECT_FAILED;
-            die($e->getMessage());
+            die($this->error = $e->getMessage());
         }
     }
 

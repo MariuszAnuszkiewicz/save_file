@@ -15,11 +15,11 @@ class Config extends Setting
 
 // database
 
-Config::set('db.host', 'localhost');
-Config::set('db.user', 'root');
-Config::set('db.password', '');
-Config::set('db.db_name', 'user');
+    Config::set('db.host', 'localhost');
+    Config::set('db.user', 'root');
+    Config::set('db.password', '');
+    Config::set('db.db_name', 'user');
 
 // sessions
 
-Config::set('session.session_name', 'user');
+    Config::set('session.session_name', 'user');

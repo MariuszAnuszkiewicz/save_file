@@ -1,7 +1,5 @@
 <?php namespace MariuszAnuszkiewicz\classes;
 
-use MariuszAnuszkiewicz\helper\Alerts;
-
 class UserLogin
 {
     private $db;

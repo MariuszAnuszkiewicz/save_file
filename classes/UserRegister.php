@@ -1,6 +1,5 @@
 <?php namespace MariuszAnuszkiewicz\classes;
-
-use MariuszAnuszkiewicz\helper\Alerts;
+ob_start();
 
 class UserRegister
 {
@@ -18,11 +17,10 @@ class UserRegister
    public function register($username, $email, $password)
    {
       if ($this->validate->checkUserExists($email) == true){
-         echo Alerts::$alert['register_failed'];
-      } else {
-         $sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
-         $this->db->query($sql, array($this->validate->escape($username), $this->validate->escape($email), $this->validate->escape($this->hash->encrypt($password))));
+          return false;
       }
-	  header("Location: ../includes/user_login.php");
+      $sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
+      $this->db->query($sql, array($this->validate->escape($username), $this->validate->escape($email), $this->validate->escape($this->hash->encrypt($password))));
+      header("Location: ../includes/user_login.php");
    }
 }

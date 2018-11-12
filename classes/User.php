@@ -18,10 +18,10 @@ class User
         if (!$email) {
             $this->loggedIn = false;
         } else {
-           $this->userId = $this->getIdByEmail($email);
-           $this->userName = $this->getUsernameByEmail($email);
-           $this->userEmail = $email;
-           $this->loggedIn = true;
+            $this->userId = $this->getIdByEmail($email);
+            $this->userName = $this->getUsernameByEmail($email);
+            $this->userEmail = $email;
+            $this->loggedIn = true;
         }
     }
 

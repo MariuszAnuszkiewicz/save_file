@@ -32,13 +32,13 @@ class ValidateRegisterInput
     {
         $isSet = isset($input) ? $input : null;
         if (isset($submit) || $isSet) {
-	   if (strlen($this->escape($input)) < 1) {
-	       echo self::EMPTY_INPUT;
-	       exit;
-	   } elseif (strlen($this->escape($input)) > 99) {
-	       echo self::TOO_LONG;
-	       exit;
-	   } 
+	        if (strlen($this->escape($input)) < 1) {
+	            echo self::EMPTY_INPUT;
+	            exit;
+	        } elseif (strlen($this->escape($input)) > 99) {
+	            echo self::TOO_LONG;
+	            exit;
+	        }
         }
         return $this->escape($input);
     }

@@ -2,7 +2,7 @@
 
 class Run
 {
-  
+
     public static function initGetSaveFile()
     {
         $status = null;
@@ -54,8 +54,6 @@ class Run
             $userRegisterObj = new UserRegister();
             if ($userRegisterObj->register($username, $email, $password) == true) {
                 $userRegisterObj->register($validateObj->validateUsername($username), $email, $validateObj->validatePassword($password));
-            } else {
-                exit;
             }
         }
     }
