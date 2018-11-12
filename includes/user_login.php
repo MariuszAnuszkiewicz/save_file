@@ -16,6 +16,10 @@ if (!Session::exists('user')) {
     echo Session::flash('login_failed');
 }
 
+if (isset($_REQUEST['set'])) {
+    Alerts::set('register_success', '');
+}
+
 if (isset($_SERVER['HTTP_REFERER'])) {
     if (preg_match('/list_data/', $_SERVER['HTTP_REFERER']) && !Session::exists('user')) {
         echo Alerts::get('logout_success');

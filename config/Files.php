@@ -17,4 +17,3 @@ class Files extends Setting
 
     Files::set('link_save_file', $_SERVER['REQUEST_URI'] . "/../../web/uploads/data.json");
     Files::set('save_file',  __DIR__ . "/../web/uploads/data.json");
-

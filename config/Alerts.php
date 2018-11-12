@@ -13,8 +13,10 @@ class Alerts extends Setting
     }
 }
 
-Alerts::set('save_success', 'Dane zostały zapisane prawidłowo.');
-Alerts::set('logout_success', 'Wylogowałeś się pomyślnie.');
-Alerts::set('register_success', 'Rejestracja użytkownika przebiegła prawidłowo.');
-Alerts::set('register_failed', 'Taki użytkownik już istnieje. Proszę wpisać nazwę nowego Użytkownika.');
-Alerts::set('empty_database', 'Brak użytkowników w bazie danych.');
+// alerts
+
+    Alerts::set('save_success', 'Dane zostały zapisane prawidłowo.');
+    Alerts::set('logout_success', 'Wylogowałeś się pomyślnie.');
+    Alerts::set('register_success', 'Rejestracja użytkownika przebiegła prawidłowo.');
+    Alerts::set('register_failed', 'Taki użytkownik już istnieje. Proszę wpisać nazwę nowego Użytkownika.');
+    Alerts::set('empty_database', 'Brak użytkowników w bazie danych.');

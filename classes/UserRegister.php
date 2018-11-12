@@ -1,5 +1,4 @@
 <?php namespace MariuszAnuszkiewicz\classes;
-ob_start();
 
 class UserRegister
 {
